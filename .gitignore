@@ -1,0 +1,6 @@
+*.pyc
+*.DS_Store
+Icon
+__pycache__
+
+Pipfile.lock
