@@ -4,3 +4,5 @@ Icon
 __pycache__
 
 Pipfile.lock
+env/
+
