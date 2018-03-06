@@ -1,0 +1,5 @@
+{
+  "tests/test_build1.py::TestApp::()::test_login": true,
+  "tests/test_build1.py::TestApp::()::test_me_page": true,
+  "tests/test_build1.py::TestApp::()::test_register": true
+}
