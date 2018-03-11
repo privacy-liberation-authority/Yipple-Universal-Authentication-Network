@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block page_title %}Login{% endblock %}  
+{% block content %}
+<h1 class="mt-5">Login</h1> 
+
+<form method="post" action="login">
+  <div class="form-group">
+    <label class="col-form-label col-form-label-sm" for="username">Username</label>
+    <input class="form-control form-control-sm" type="text" placeholder="Username" id="username" name="username">
+  </div>
+
+  <div class="form-group">
+    <label class="col-form-label col-form-label-sm" for="password">Password</label>
+    <input class="form-control form-control-sm" type="password" placeholder="Password" id="password" name="password">
+  </div>
+  
+  <input type="submit" class="btn btn-success" value="Submit"></input>
+
+</form>
+
+{% endblock %} 
