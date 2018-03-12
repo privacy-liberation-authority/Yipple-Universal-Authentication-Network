@@ -2,7 +2,7 @@
 
 Your task is to complete the registration and login components of this banking application.
 
-## Set up on this repository
+## Set up and install
 
 ```console
 git clone git@github.com:sajidanower23/Yipple-Universal-Authentication-Network.git Yipple
