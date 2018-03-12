@@ -4,7 +4,7 @@ Your task is to complete the registration and login components of this banking a
 
 ## Set up and install
 
-```console
+```shell
 git clone git@github.com:sajidanower23/Yipple-Universal-Authentication-Network.git Yipple
 cd Yipple/
 git remote add pla git@github.com:privacy-liberation-authority/Yipple-Universal-Authentication-Network.git
@@ -20,7 +20,7 @@ source env/bin/activate
 Once you have the repository downloaded and the setup out of the way,
 make your own git branch
 
-```console
+```shell
 git checkout -b dev-<identity>
 ```
 
@@ -29,7 +29,7 @@ Initials or first name are commonly used identities for git branches.
 
 ## Run
 
-```console
+```shell
 export FLASK_APP=run.py
 flask run
 ```
