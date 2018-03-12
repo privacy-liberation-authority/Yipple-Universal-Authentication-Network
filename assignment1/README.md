@@ -10,8 +10,7 @@ source env/bin/activate
 pip install -r requirements.txt
 pip install -e .
 
-export FLASK_APP=run.py
-flask run
+./run.py
 ```
 
 ## Specification
