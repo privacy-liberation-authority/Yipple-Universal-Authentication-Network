@@ -18,6 +18,7 @@ class TestApp:
         assert re.search("/login$", res.location)
 
     def test_login(self, client):
+        res = client.post('/register', data=register_data)
         res = client.post('/login', data=register_data)
         assert 'username' in session
 
