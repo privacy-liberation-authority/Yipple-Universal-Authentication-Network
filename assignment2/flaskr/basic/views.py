@@ -98,11 +98,16 @@ def users(account):
 
 @app.route('/admin')
 def admin():
+    searchedUser = request.args.get('user')
+
     # TODO: Implement and secure the user administration control panel
     # The administration panel must distinguish between users that are administrators
-    # as well as regular users. It must return a page that denies a regular user
-    # access and display '403 permission denied'
-    return render_template("admin.html")
+    # as well as regular users.
+    # It should also be able to search for a user via a get parameter called user.
+    # You must also implement a post method in order update a searched users credentials.
+    # It must return a page that denies a regular user
+    # access and display '403 permission denied'.
+    return render_template("admin.html", user=searchedUser)
 
 
 

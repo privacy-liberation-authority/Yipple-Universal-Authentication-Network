@@ -92,22 +92,27 @@ You must create a template that outputs the user credentials if they are logged 
 ```
 
 ### Administration backend (views.py) - 1 mark
-1. The administration panel must provision a SEPARATE login gateway and session token for administration. This must be different to the one used for user accounts.
-
 You can use the same users database, but you might need to add a new parameter in order to tell the difference between administrators and regular users.
 
 2. The administration backend must support POST requests
-and return the credentials of a searched user.
+and return the credentials of a searched user. To view
 
 ```python
 @app.route('/admin')
-def admin:
-    # TODO: Implement and secure the user administration control panel
+def admin():
+    searchedUser = request.args.get('user')
 
-    return render_template('admin.html')
+    # TODO: Implement and secure the user administration control panel
+    # The administration panel must distinguish between users that are administrators
+    # as well as regular users.
+    # It should also be able to search for a user via a get parameter called user.
+    # You must also implement a post method in order update a searched users credentials.
+    # It must return a page that denies a regular user
+    # access and display '403 permission denied'.
+    return render_template("admin.html", user=searchedUser)
 ```
 
-### Administration frontend - 1 mark
+### Administration frontend (admin.html) - 1 mark
 You must create the template for the administration front end.
 The administration front end provisions the form for account searching.
 After performing a search, the front end exposes the user
@@ -133,7 +138,7 @@ The table will allow a logged in administrator the ability
 to edit and update the credentials of any given KomradeBank account.
 -->
 <div>
-    <h3>Edit Account Credentials</h3>
+    <h3>Searched Account Credentials</h3>
     {% if user %}
     <table class="table">
         <thead>
