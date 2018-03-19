@@ -30,8 +30,13 @@ CREATE TABLE creds(
 );
 ```
 
+## Database Setup
+You will want to initialise the sqlite3 databases first.
+
+1. `cd flaskr/db` and then run `initdb.sh`
+
 ## What you must build
-#### User Backend (views.py) - 1 mark
+#### User Backend (views.py)
 For the route `/users/<account>`, you must show a user their information.
 For regular users that are logged into KomradeBank, they must be allowed to view and update their own user credentials. You should display the queried / updated values out to the page as separate entities.
 
@@ -56,7 +61,7 @@ def users(account):
     return response
 ```
 
-#### User Frontend (users.html) - 1 mark
+#### User Frontend (users.html)
 You must create a template that outputs the user credentials if they are logged in as that user, or are an administrator. Present to them their current details as well as a form to edit their details. Make sure no other user can edit another users details.
 
 ```html
@@ -91,7 +96,7 @@ You must create a template that outputs the user credentials if they are logged 
 
 ```
 
-### Administration backend (views.py) - 1 mark
+### Administration backend (views.py)
 You can use the same users database, but you might need to add a new parameter in order to tell the difference between administrators and regular users.
 
 2. The administration backend must support POST requests
@@ -100,19 +105,26 @@ and return the credentials of a searched user. To view
 ```python
 @app.route('/admin')
 def admin():
-    searchedUser = request.args.get('user')
+    response = None
 
-    # TODO: Implement and secure the user administration control panel
-    # The administration panel must distinguish between users that are administrators
-    # as well as regular users.
-    # It should also be able to search for a user via a get parameter called user.
-    # You must also implement a post method in order update a searched users credentials.
-    # It must return a page that denies a regular user
-    # access and display '403 permission denied'.
-    return render_template("admin.html", user=searchedUser)
+    if request.method == 'GET':
+        # TODO: Implement and secure the user administration control panel
+        # The administration panel must distinguish between users that are administrators
+        # as well as regular users.
+        # It should also be able to search for a user via a get parameter called user.
+        searchedUser = request.args.get('user')
+        response = render_template("admin.html", user=searchedUser)
+
+    elif request.method == 'POST':
+        # TODO: You must also implement a post method in order update a searched users credentials.
+        # It must return a page that denies a regular user
+        # access and display '403 permission denied'.
+        response = render_template("admin.html")
+
+    return response
 ```
 
-### Administration frontend (admin.html) - 1 mark
+### Administration frontend (admin.html)
 You must create the template for the administration front end.
 The administration front end provisions the form for account searching.
 After performing a search, the front end exposes the user
@@ -123,7 +135,6 @@ credentials from the creds database on the page. It also needs to present a form
 {% block page_title %}Login{% endblock %}
 {% block content %}
 <h1 class="mt-5">Account Administration Portal</h1>
-
 <!-- TODO: Implement the user account search -->
 <div>
     <h3>Account Search</h3>
