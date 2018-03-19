@@ -2,7 +2,7 @@
 import sqlite3
 from flask import g
 
-DATABASE = './users.db'
+DATABASE = 'users.db'
 
 def getDB():
     db = getattr(g, '_database', None)

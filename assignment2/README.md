@@ -155,7 +155,7 @@ to edit and update the credentials of any given KomradeBank account.
         <thead>
             <th>Name</th>
             <th>Address</th>
-            <th>Emaik</th>
+            <th>Email</th>
             <th>Phone</th>
             <th>Current Funds</th>
         </thead>
