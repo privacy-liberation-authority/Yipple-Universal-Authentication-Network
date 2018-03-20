@@ -33,7 +33,7 @@ CREATE TABLE creds(
 ## Database Setup
 You will want to initialise the sqlite3 databases first.
 
-1. `cd flaskr/db` and then run `initdb.sh`
+1. `cd db` and then run `initdb.sh`
 
 ## What you must build
 #### User Backend (views.py)
