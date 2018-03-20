@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block page_title %}Welcome{% endblock %}
+{% block content %}
+<h1 class="mt-5">Welcome to KomradeBank</h1>
+<h5>Your secrets are safe with us, {% if username %}komrade {{ username }}{% else %}100% secure and safe{% endif %}.</h5>
+
+{% if username %}
+<h3 class="mt-5">Your Credentials</h3>
+<a class="btn btn-info" href="/users/me">Edit Credentials</a>
+
+<h3 class="mt-5">Your Transactions</h3>
+{% else %}
+<button class="btn btn-success mt-5" onclick="location.replace('/register')">Register now</button>
+{% endif %}
+{% endblock %}

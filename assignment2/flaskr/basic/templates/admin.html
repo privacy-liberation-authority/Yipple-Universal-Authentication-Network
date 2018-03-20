@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block page_title %}Login{% endblock %}
+{% block content %}
+<h1 class="mt-5">Account Administration Portal</h1>
+
+<!-- TODO: Implement the user account search -->
+<div>
+    <h3>Account Search</h3>
+    <p>Search for an existing user</p>
+    <!-- TODO: Implement the user search form-->
+    <form></form>
+</div>
+
+<!--
+TODO: Implement the user results table for their credentials
+The table will allow a logged in administrator the ability
+to edit and update the credentials of any given KomradeBank account.
+-->
+<div>
+    <h3>Searched Account Credentials</h3>
+    {% if user %}
+    <table class="table">
+        <thead>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Emaik</th>
+            <th>Phone</th>
+            <th>Current Funds</th>
+        </thead>
+        <!-- IMPLEMENT ME -->
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Edit credentials for {{ user }} </h3>
+    <form><!-- IMPLEMENT ME --></form>
+
+    {% else %}
+    <p>Search for a user to edit their credentials</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block page_title %}User{% endblock %}
+{% block content %}
+<h1 class="mt-5">User</h1>
+
+{% if username %}
+<h5>Welcome, {{ username }}, what can we do for you today?</h5>
+
+<h3>View your Credentials</h3>
+<p>Implement Me</p>
+
+<h3>Edit your Credentials</h3>
+<p>Implement Me</p>
+
+<h3>Search</h3>
+<form method="get">
+    <input type="text" name="username"></input>
+    <button type="submit" class="btn">Search</button>
+</form>
+{% else %}
+<h3>403 permission denied</h3>
+<p>
+    You are breaking the law, by viewing this page. The police have been notified,
+    and you will be receiving correspondence from KomradeBank's legal contractor,
+    Blackwater Solicitors. Your IP has been recorded.
+</p>
+{% endif %}
+{% endblock %}
