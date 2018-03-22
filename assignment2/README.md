@@ -36,7 +36,7 @@ You will want to initialise the sqlite3 databases first.
 1. `cd db` and then run `initdb.sh`
 
 ## What you must build
-#### User Backend (views.py)
+### User Backend (views.py)
 For the route `/users/<account>`, you must show a user their information.
 For regular users that are logged into KomradeBank, they must be allowed to view and update their own user credentials. You should display the queried / updated values out to the page as separate entities.
 
@@ -61,7 +61,7 @@ def users(account):
     return response
 ```
 
-#### User Frontend (users.html)
+### User Frontend (users.html)
 You must create a template that outputs the user credentials if they are logged in as that user, or are an administrator. Present to them their current details as well as a form to edit their details. Make sure no other user can edit another users details.
 
 ```html
@@ -96,9 +96,12 @@ You must create a template that outputs the user credentials if they are logged 
 
 ```
 
-Here is what we mean:
+Here are a few dreary representations of what that would look like. We encourage you to be creative with your design, the important thing is that the appropriate database information is output.
 
 ![](img/user1.png)
+
+Ignore the uid field in the form, it's an older screenshot.
+![](img/user2.png)
 
 ### Administration backend (views.py)
 You can use the same users database, but you might need to add a new parameter in order to tell the difference between administrators and regular users.
@@ -127,6 +130,10 @@ def admin():
 
     return response
 ```
+
+It will look like this
+![](img/admin1.png)
+
 
 ### Administration frontend (admin.html)
 You must create the template for the administration front end.
@@ -185,3 +192,5 @@ to edit and update the credentials of any given KomradeBank account.
 {% endblock %}
 ```
 
+When the user is not an admin, or the logged in user searches for another user or even when in doubt, return a 403. Make sure you output the whole '403 permission denied'. Tests will check for it.
+![](img/403text.png)
