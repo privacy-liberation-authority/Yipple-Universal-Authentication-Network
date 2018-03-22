@@ -2,7 +2,6 @@ from flask import Flask
 from flask_session import Session
 import os
 
-from db import getDB
 
 class ConfigClass(object):
     DEBUG = True
