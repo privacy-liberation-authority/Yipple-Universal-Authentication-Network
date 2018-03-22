@@ -7,11 +7,5 @@ then
     echo "Cleared users database."
 fi
 
-if [ -f ../creds.db ]
-then
-    rm ../creds.db
-    echo "Cleared creds database"
-fi
-
 cat userSchema.sql | sqlite3 ../users.db && echo "Created ../users.db"
-cat credSchema.sql | sqlite3 ../creds.db && echo "Created ../creds.db"
+

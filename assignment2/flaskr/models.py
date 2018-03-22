@@ -3,7 +3,7 @@ import json
 import bcrypt
 import uuid
 
-from db import getDB, queryDB, insertDB
+from .db import getDB, queryDB, insertDB
 
 def registerUser(username, password):
     isSuccess = False

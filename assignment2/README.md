@@ -96,6 +96,10 @@ You must create a template that outputs the user credentials if they are logged 
 
 ```
 
+Here is what we mean:
+
+![](img/user1.png)
+
 ### Administration backend (views.py)
 You can use the same users database, but you might need to add a new parameter in order to tell the difference between administrators and regular users.
 
