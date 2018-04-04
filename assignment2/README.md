@@ -30,10 +30,24 @@ CREATE TABLE creds(
 );
 ```
 
-## Database Setup
+## Setup
+
 You will want to initialise the sqlite3 databases first.
 
 1. `cd db` and then run `initdb.sh`
+
+Then initialiase the rest of the project
+
+1. `virtualenv venv`
+2. `source ./venv/bin/activate`
+3. `pip install -r requirements.txt`
+4. `pip install -e .`
+
+## Running tests
+
+In the root directory run `py.test` to run the tests.
+
+Be warned, the tests will reset the database to a sane state, but if one of the tests fails for you and the state doesnt get reset then your tests which previously passed may start failing. You will have to watch for this.
 
 ## What you must build
 ### User Backend (views.py)
