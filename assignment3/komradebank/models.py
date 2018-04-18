@@ -291,7 +291,8 @@ class Xact:
     def by_acct_id(acct_id):
 
         # TODO: Implement method to return list of all transactions for a given account id.
-
+        # SQL query should be ordered so the most recent transaction (by id) is first i.e. index 0.
+        
         # Returns list of Xact objects
         return []
 
@@ -299,6 +300,7 @@ class Xact:
     def by_filter(filter):
 
         # TODO: Implement method to return list of all transactions where 'xact_memo' matches a LIKE filter.
+        # SQL query should be ordered so the most recent transaction (by id) is first i.e. index 0.
 
         # Returns list of Xact objects
         return []
