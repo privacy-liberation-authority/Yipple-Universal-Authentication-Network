@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block page_title %}Login{% endblock %}
+{% block content %}
+
+<h3 class="mt-5">Admin Panel</h3>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#users">Users</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#accts">Accounts</a>
+  </li>
+</ul>
+
+<p></p>
+
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade show active" id="users">
+
+    <p>Click on a user to modify their account details, because we trust you!</p>
+
+    <table class="table table-hover">
+    <div class="form-row">
+        <div class="form-group col-sm-6">
+          <input id="searchUser" type="text" class="form-control" placeholder="Enter search...">
+          <small class="form-text text-muted">WARNING: We're always watching. Always. Watching. YOU.</small>
+        </div>
+    </div>
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Role</th>
+            <th>Username</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody class="filterable">
+        {% for u in users %}
+        <tr class="clickable-row" data-href="/edit/{{ u.name | urlencode }}?next=%2Fadmin" id="user_{{ u.id }}">
+            <td>{{ u.id }}</td>
+            <td>{{ u.role | urlencode }}</td>
+            <td>{{ u.name | urlencode }}</td>
+            <td>{{ u.fullname | urlencode }}</td>
+            <td>{{ u.email | urlencode }}</td>
+            <td>{{ u.phone | urlencode }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+  </div>
+  <div class="tab-pane fade" id="accts">
+
+    <p>Click on an account to view transactions, follow the money!</p>
+
+    <table class="table table-hover">
+    <div class="form-row">
+        <div class="form-group col-sm-6">
+          <input id="searchAcct" type="text" class="form-control" placeholder="Enter search...">
+          <small class="form-text text-muted">WARNING: We're always watching. Always. Watching. YOU.</small>
+        </div>
+    </div>
+    <thead class="table-dark">
+        <tr>
+            <th>User</th>
+            <th>ID</th>
+            <th>Balance</th>
+            <th># Transactions</th>
+        </tr>
+    </thead>
+    <tbody class="filterable">
+        {% for a in accts %}
+        <tr class="clickable-row" data-href="/acct/{{ a.id }}">
+            <td>{{ a.user_name | urlencode }}</td>
+            <td>{{ a.id }}</td>
+            <td>{{ "${:,.2f}".format(a.balance) }}</td>
+            <td>{{ a.count }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});
+
+$(document).ready(function(){
+
+  $(".filterable tr:has(td)").each(function(){
+    var t = $(this).text().toLowerCase();
+    $("<td class='indexColumn'></td>").hide().text(t).appendTo(this);
+  });
+
+  $("#searchUser, #searchAcct").keyup(function() {
+    var s = $(this).val().toLowerCase().split(" ");
+    $(".filterable tr:hidden").show();
+    $.each(s, function(){
+      $(".filterable tr:visible .indexColumn:not(:contains('"+ this + "'))").parent().hide();
+    });
+  });
+
+});
+
+</script>
+{% endblock %}

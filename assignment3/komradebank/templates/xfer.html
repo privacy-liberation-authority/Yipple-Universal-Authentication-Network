@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block page_title %}Edit{% endblock %}
+
+{% block content %}
+
+<h3 class="mt-5">Transfer Funds</h3>
+
+<div class="row">
+<div class="col-sm-6">
+<form role="form" method="post">
+  {{ form.hidden_tag() }}
+
+  <div class="form-group">
+  {{ form.src.label }}
+  {{ form.src(class_="form-control", disabled=True) }}
+  <small class="form-text text-muted">Available funds {{ "${:,.2f}".format(avail) }}</small>
+
+  </div>
+
+  <div class="form-group">
+    {{ form.dst.label }}
+    {% if form.dst.errors %}
+      {% for e in form.dst.errors %}
+        <p class="help-block">{{ e }}</p>
+      {% endfor %}
+    {% endif %}
+    {{ form.dst(class_="form-control") }}
+  </div>
+
+  <div class="form-group">
+    {{ form.amount.label }}
+    {% if form.amount.errors %}
+      {% for e in form.amount.errors %}
+        <p class="help-block">{{ e }}</p>
+      {% endfor %}
+    {% endif %}
+    {{ form.amount(class_="form-control") }}
+  </div>
+
+  <div class="form-group">
+    {{ form.memo.label }}
+    {% if form.memo.errors %}
+      {% for e in form.memo.errors %}
+        <p class="help-block">{{ e }}</p>
+      {% endfor %}
+    {% endif %}
+    {{ form.memo(class_="form-control") }}
+  </div>
+
+  <button type="submit" class="btn btn-dark" id="submit">Transfer Now</button>
+
+</form>
+</div>
+</div>
+
+{% endblock %}

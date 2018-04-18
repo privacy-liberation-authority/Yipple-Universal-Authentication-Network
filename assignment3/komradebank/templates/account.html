@@ -1,0 +1,27 @@
+{% if acct %}
+<h3 class="mt-5">Your Balance: <span style="color: green">{{ "${:,.2f}".format(acct.balance) }}</span></h3>
+<br>
+
+<table class="table table-striped" id="xfer-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Memo</th>
+            <th>Credit / Debit</th>
+            <th>Balance</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in xacts %}
+        <tr>
+            <td>{{ x.timestamp }}</td>
+            <td>{{ x.memo | urlencode }}</td>
+            <td {% if x.amount >= 0 %}  class="table-success"
+                {% else %}              class="table-danger"
+                {% endif %}}>{{ "${:,.2f}".format(x.amount) }}</td>
+            <td>{{ "${:,.2f}".format(x.balance) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}

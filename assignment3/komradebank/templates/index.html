@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block page_title %}Index{% endblock %}
+
+{% block content %}
+
+{% if current_user.is_authenticated %}
+<h3 class="mt-5">Account Details</h3>
+
+<div class="col-sm-6">
+<table class="table">
+    <tbody>
+        <tr>
+            <td>Fullname</td>
+            <td id="user_fullname">{{ current_user.fullname | urlencode }}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td id="user_email">{{ current_user.email | urlencode }}</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td id="user_phone">{{ current_user.phone | urlencode }}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<a class="btn btn-dark" href="/edit/{{ current_user.name | urlencode }}"><span id="btnEditDetails">Edit Details</span></a>
+
+{% include 'account.html' %}
+
+{% else %}
+
+<div class="jumbotron">
+  <h1 class="display-3" id="jumbo-title">> Blockchain.</h1>
+  <p class="lead">You need it. You want it. Act now to secure your financial future!</p>
+  <hr class="my-4">
+  <p>DISCLAIMER: KomradeBank is not legally responsible for the safety or security of your finances. We do not guarantee to be using any form of blockchain technology, or are really even sure what it is. It's very likely we will instead sell your personal information to third parties for profit.</p>
+    <a class="btn btn-primary btn-lg" href="/register" role="button"><span id="btnRegister">Register Now</span></a>
+</div>
+
+{% endif %}
+
+{% endblock %}
