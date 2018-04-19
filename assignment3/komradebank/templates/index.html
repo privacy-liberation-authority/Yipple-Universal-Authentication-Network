@@ -11,20 +11,20 @@
     <tbody>
         <tr>
             <td>Fullname</td>
-            <td id="user_fullname">{{ current_user.fullname | urlencode }}</td>
+            <td id="user_fullname">{{ current_user.fullname | safe }}</td>
         </tr>
         <tr>
             <td>Email</td>
-            <td id="user_email">{{ current_user.email | urlencode }}</td>
+            <td id="user_email">{{ current_user.email | safe }}</td>
         </tr>
         <tr>
             <td>Phone</td>
-            <td id="user_phone">{{ current_user.phone | urlencode }}</td>
+            <td id="user_phone">{{ current_user.phone | safe }}</td>
         </tr>
     </tbody>
 </table>
 </div>
-<a class="btn btn-dark" href="/edit/{{ current_user.name | urlencode }}"><span id="btnEditDetails">Edit Details</span></a>
+<a class="btn btn-dark" href="/edit/{{ current_user.name | safe }}"><span id="btnEditDetails">Edit Details</span></a>
 
 {% include 'account.html' %}
 

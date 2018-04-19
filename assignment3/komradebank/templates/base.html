@@ -40,7 +40,7 @@
           {% endif %}
           </ul>
           {% if current_user.is_authenticated %}
-          <div class="col">Logged in as {{ current_user.name | urlencode }}</div>
+          <div class="col">Logged in as {{ current_user.name | safe }}</div>
           <form action="{{ url_for('.logout') }}">
               <button type="submit" class="btn btn-danger" id="btnLogout"/>Logout</button>
           </form>
@@ -58,7 +58,7 @@
         <h1 class="mt-5">Welcome to KomradeBank</h1>
         <h5>Your secrets are safe with us,
             {% if current_user.is_authenticated %}
-                komrade {{ current_user.name | urlencode }}.
+                komrade {{ current_user.name | safe }}.
             {% else %}
                 100% secure and safe.
             {% endif %}
@@ -71,7 +71,7 @@
         <div class="alert alert-dismissible alert-primary">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         {% for message in messages %}
-        <p class="mb-0">{{ message }}</p>
+        <p class="mb-0">{{ message | safe }}</p>
         {% endfor %}
         </div>
     </div>

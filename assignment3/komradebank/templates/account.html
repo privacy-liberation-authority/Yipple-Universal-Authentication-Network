@@ -14,8 +14,8 @@
     <tbody>
         {% for x in xacts %}
         <tr>
-            <td>{{ x.timestamp }}</td>
-            <td>{{ x.memo | urlencode }}</td>
+            <td>{{ x.timestamp | safe }}</td>
+            <td>{{ x.memo | safe }}</td>
             <td {% if x.amount >= 0 %}  class="table-success"
                 {% else %}              class="table-danger"
                 {% endif %}}>{{ "${:,.2f}".format(x.amount) }}</td>

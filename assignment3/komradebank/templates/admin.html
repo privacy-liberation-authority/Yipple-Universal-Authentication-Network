@@ -41,11 +41,11 @@
         {% for u in users %}
         <tr class="clickable-row" data-href="/edit/{{ u.name | urlencode }}?next=%2Fadmin" id="user_{{ u.id }}">
             <td>{{ u.id }}</td>
-            <td>{{ u.role | urlencode }}</td>
-            <td>{{ u.name | urlencode }}</td>
-            <td>{{ u.fullname | urlencode }}</td>
-            <td>{{ u.email | urlencode }}</td>
-            <td>{{ u.phone | urlencode }}</td>
+            <td>{{ u.role | safe }}</td>
+            <td>{{ u.name | safe }}</td>
+            <td>{{ u.fullname | safe }}</td>
+            <td>{{ u.email | safe }}</td>
+            <td>{{ u.phone | safe }}</td>
         </tr>
         {% endfor %}
     </tbody>
@@ -74,7 +74,7 @@
     <tbody class="filterable">
         {% for a in accts %}
         <tr class="clickable-row" data-href="/acct/{{ a.id }}">
-            <td>{{ a.user_name | urlencode }}</td>
+            <td>{{ a.user_name | safe }}</td>
             <td>{{ a.id }}</td>
             <td>{{ "${:,.2f}".format(a.balance) }}</td>
             <td>{{ a.count }}</td>
